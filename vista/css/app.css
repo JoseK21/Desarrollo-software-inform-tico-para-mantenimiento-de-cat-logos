@@ -1,0 +1,49 @@
+.panel {
+    max-width: 800px;
+    padding: 20px;
+    margin: auto;
+}
+
+.text-center {
+    text-align: center;
+    color: rgb(0, 98, 128);
+}
+
+table {
+    width: 100%;
+}
+
+table,
+tr,
+td {
+    border: 1px solid tan;
+}
+
+.btn {
+    background: rgb(0, 98, 128);
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.mv-5 {
+    margin: 5px 0;
+}
+
+footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(0, 98, 128);
+    color: white;
+}
+
+footer>p>a {
+    color: white;
+}
+
+body {
+    margin: 0;
+}
