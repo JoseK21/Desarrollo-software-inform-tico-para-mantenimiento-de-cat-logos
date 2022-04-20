@@ -1,46 +1,30 @@
 <?php
-class Modelo{
-    private $Modelo;
-    private $db;    
-    private $datos;    
-    public function __construct(){
-        $this->Modelo = array();
-        $this->db = new PDO('mysql:host=localhost;dbname=mvc',"root","");
-    }
-    public function insertar($tabla, $data){
-        $consulta="insert into ".$tabla." values(null,". $data .")";
-        $resultado=$this->db->query($consulta);
-        if ($resultado) {
-            return true;
-        }else {
-            return false;
-        }
-     }
+class Login
+{
+    private $db;
+    public $isValid = false;
 
-     public function mostrar($tabla,$condicion){
-        $consul="select * from ".$tabla." where ".$condicion.";";
-        $resu=$this->db->query($consul);        
-        while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
-                $this->datos[]=$filas;
-        }
-        return $this->datos;
-    } 
-
-    public function actualizar($tabla, $data, $condicion){       
-        $consulta="update ".$tabla." set ". $data ." where ".$condicion;
-        $resultado=$this->db->query($consulta);
-        if ($resultado) {
-            return true;
-        }else {
-            return false;
-        }
+    public function __construct()
+    {
+        $this->db = new PDO('mysql:host=localhost;dbname=mvc', "root", "");
     }
-    public function eliminar($tabla, $condicion){
-        $eli="delete from ".$tabla." where ".$condicion;
-        $res=$this->db->query($eli);
-        if ($res) {
-            return true; 
-        }else {
+
+    public function login($tabla, $condicion)
+    {
+        $consul = "select * from " . $tabla . " where " . $condicion . ";";
+        $resu = $this->db->query($consul);
+
+        $row = $resu->FETCHALL(PDO::FETCH_ASSOC);
+
+        if(is_array($row) && !empty($row)) {
+            $_SESSION['userValid'] = true;
+            $_SESSION['username'] = $row[0]['username'];
+            $_SESSION['id'] = $row[0]['id'];
+            return true;
+        } else {
+            $_SESSION['userValid'] = false;
+            $_SESSION['username'] = '';
+            $_SESSION['id'] = '';
             return false;
         }
     }

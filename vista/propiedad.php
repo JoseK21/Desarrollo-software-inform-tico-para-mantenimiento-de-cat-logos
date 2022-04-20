@@ -1,7 +1,14 @@
 <?php
-require_once("vista/layouts/header.php");
+require_once("./layouts/header.php");
 ?>
-<a href="index.php?m=nuevo" class="btn">Agregar Propietario</a>
+
+<h1>Propiedades</h1>
+
+<div class="betweeen">
+    <a href="propiedad-nueva.php" class="btn">Agregar Propiedad</a>
+    <a href="propietario.php" class="btn btn-gray">Atras</a>
+</div>
+
 <table>
     <tr>
         <td>ID</td>
@@ -17,8 +24,8 @@ require_once("vista/layouts/header.php");
                         <td><?php echo $v['id'] ?> </td>
                         <td><?php echo $v['nombre'] ?> </td>
                         <td>
-                            <a class="btn" href="index.php?m=editar&id=<?php echo $v['id']?>">EDITAR</a>
-                            <a class="btn" href="index.php?m=eliminar&id=<?php echo $v['id']?>" onclick="return confirm('ESTA SEGURO'); false">ELIMINAR</a>
+                            <a class="btn" href="propiedad-editar.php">EDITAR</a>
+                            <a class="btn" href="propiedad-eliminar.php" onclick="return confirm('ESTA SEGURO'); false">ELIMINAR</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -30,4 +37,4 @@ require_once("vista/layouts/header.php");
     </tbody>
 </table>
 <?php
-require_once("vista/layouts/footer.php");
+require_once("./layouts/footer.php");

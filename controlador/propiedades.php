@@ -1,6 +1,6 @@
 <?php
-require_once("modelo/propiedades/index.php");
-class modeloController{
+require_once("modelo/propiedades.php");
+class propiedadesController{
     private $model;
     public function __construct(){
         $this->model = new Modelo();
@@ -22,7 +22,7 @@ class modeloController{
         $data = "'".$nombre."',".$precio;
         $producto = new Modelo();
         $dato = $producto->insertar("productos",$data);
-        header("location:".urlsite);
+        header("location:"."http://localhost/mantenimiento/");
     }
 
     //editar
@@ -40,7 +40,7 @@ class modeloController{
         $data = "nombre='".$nombre."',precio=".$precio;
         $producto = new Modelo();
         $dato = $producto->actualizar("productos",$data,"id=".$id);
-        header("location:".urlsite);
+        header("location:"."http://localhost/mantenimiento/");
     }
 
     //eliminar
@@ -48,7 +48,7 @@ class modeloController{
         $id = $_REQUEST['id'];
         $producto = new Modelo();
         $dato = $producto->eliminar("productos","id=".$id);
-        header("location:".urlsite);
+        header("location:"."http://localhost/mantenimiento/");
     }
 
 

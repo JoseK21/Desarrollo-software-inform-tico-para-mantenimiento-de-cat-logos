@@ -1,55 +1,33 @@
 <?php
-require_once("modelo/login/index.php");
-class modeloController{
-    private $model;
-    public function __construct(){
-        $this->model = new Modelo();
-    }
-    // mostrar
-    static function index(){
-        $producto   = new Modelo();
-        $dato       =   $producto->mostrar("productos","1");
-        require_once("vista/login/index.php");
-    }
-    //nuevo
-    static function nuevo(){        
-        require_once("vista/login/nuevo.php");
-    }
-    //guardar
-    static function guardar(){
-        $nombre= $_REQUEST['nombre'];
-        $precio= $_REQUEST['precio'];
-        $data = "'".$nombre."',".$precio;
-        $producto = new Modelo();
-        $dato = $producto->insertar("productos",$data);
-        header("location:".urlsite);
+require_once("../modelo/login.php");
+class loginController
+{
+    public $model;
+    public function __construct()
+    {
+        $this->model = new Login();
     }
 
-    //editar
-    static function editar(){    
-        $id = $_REQUEST['id'];
-        $producto = new Modelo();
-        $dato = $producto->mostrar("productos","id=".$id);        
-        require_once("vista/login/editar.php");
-    }
-    //actualizar
-    static function actualizar(){
-        $id = $_REQUEST['id'];
-        $nombre= $_REQUEST['nombre'];
-        $precio= $_REQUEST['precio'];
-        $data = "nombre='".$nombre."',precio=".$precio;
-        $producto = new Modelo();
-        $dato = $producto->actualizar("productos",$data,"id=".$id);
-        header("location:".urlsite);
-    }
+    //validar
+    static function validar()
+    {
+        if (isset($_POST["Ingresar"]) AND $_REQUEST AND $_REQUEST['id'] AND $_REQUEST['pass']) {
 
-    //eliminar
-    static function eliminar(){    
-        $id = $_REQUEST['id'];
-        $producto = new Modelo();
-        $dato = $producto->eliminar("productos","id=".$id);
-        header("location:".urlsite);
+            $id = $_REQUEST['id'];
+            $pass = $_REQUEST['pass'];
+
+            $condition = "id='" . $id . "' AND password='" . $pass . "'";
+
+            $login = new Login();
+            $isValid = $login->login("login", $condition);
+
+            if ($_SESSION['userValid']) {
+                header("location:" . "propietario.php");
+            }
+        }
     }
+}
 
-
+if (isset($_POST)) {
+    loginController::validar();
 }
