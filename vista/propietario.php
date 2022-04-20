@@ -3,9 +3,6 @@ require_once("./layouts/header.php");
 
 require_once("../controlador/propietarios.php");
 
-
-$b = 10;
-
 ?>
 <h1>Catálogo de Propietarios</h1>
 
@@ -24,12 +21,11 @@ $b = 10;
                 <tr>
                     <td><?php echo $value['id'] ?> </td>
                     <td><?php echo $value['name'] ?> </td>
-                    <td class="flex-row">
+                    <td>
                         <form method="post" action=<?php echo 'propietario-editar.php?id=' . $value['id'] ?>>
                             <input type="submit" class="btn" value="Editar" name="EditarPropietario">
-                        </form>
-                        <form method="post" action=<?php echo 'propietario-editar.php?id=' . $value['id'] ?>>
-                            <input type="submit" class="btn" value="Eliminar" onclick="return confirm('Are you sure?');" name="EliminarPropietario">
+                            <input type="submit" class="btn" value="Eliminar" onclick="return confirm('Esta seguro? el cambio es irreversible!');" name="EliminarPropietario">
+                            <a class="btn" href=<?php echo 'propiedad.php?ownerId=' . $value['id'] ?>>Añadir proviedad</a>
                         </form>
                     </td>
                 </tr>

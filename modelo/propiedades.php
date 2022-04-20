@@ -1,17 +1,16 @@
 <?php
-class Modelo
+class Propiedades
 {
-    private $Modelo;
     private $db;
     private $datos;
     public function __construct()
     {
-        $this->Modelo = array();
         $this->db = new PDO('mysql:host=localhost;dbname=mvc', "root", "");
     }
     public function insertar($tabla, $data)
     {
-        $consulta = "insert into " . $tabla . " values(null," . $data . ")";
+        $consulta = "insert into " . $tabla . " values(" . $data . ")";
+
         $resultado = $this->db->query($consulta);
         if ($resultado) {
             return true;
@@ -24,10 +23,10 @@ class Modelo
     {
         if (!empty($condicion)) {
             $consul = "select * from " . $tabla . " where " . $condicion . ";";
-        }
-        else {
+        } else {
             $consul = "select * from " . $tabla . ";";
         }
+
         $resu = $this->db->query($consul);
         while ($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
             $this->datos[] = $filas;

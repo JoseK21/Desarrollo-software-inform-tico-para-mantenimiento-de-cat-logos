@@ -1,38 +1,45 @@
 <?php
 require_once("./layouts/header.php");
+
+require_once("../controlador/propiedades.php");
+
 ?>
 
-<h1>Propiedades</h1>
+<h1>Catálogo de Propiedades : <?php echo $_REQUEST['ownerId'] ?></h1>
 
 <div class="betweeen">
-    <a href="propiedad-nueva.php" class="btn">Agregar Propiedad</a>
+    <a href=<?php echo 'propiedad-nueva.php?ownerId=' . $_REQUEST['ownerId'] ?> class="btn">Agregar Propiedad</a>
     <a href="propietario.php" class="btn btn-gray">Atras</a>
 </div>
 
 <table>
     <tr>
         <td>ID</td>
-        <td>NOMBRE</td>
-        <td>ACCIONES</td>        
+        <td>PROVINCIA</td>
+        <td>VALOR</td>
+        <td>ACCIONES</td>
     </tr>
     <tbody>
         <?php
-            if(!empty($dato)):
-                foreach ($dato as $key => $value) : ?>
-                    <tr>
-                        <td><?php echo $value['id'] ?> </td>
-                        <td><?php echo $value['ownerId'] ?> </td>
-                        <td>
-                            <a class="btn" href="propiedad-editar.php">EDITAR</a>
-                            <a class="btn" href="propiedad-eliminar.php" onclick="return confirm('ESTA SEGURO'); false">ELIMINAR</a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-            <?php else: ?>
+        if (!empty($dato)) :
+            foreach ($dato as $key => $value) : ?>
                 <tr>
-                    <td colspan="3">NO HAY REGISTROS</td>
+                    <td><?php echo $value['id'] ?> </td>
+                    <td><?php echo $value['province'] ?> </td>
+                    <td>$ <?php echo $value['price'] ?> </td>
+                    <td>
+                        <form method="post" action=<?php echo 'propiedad-editar.php?id=' . $value['id'].'&ownerId=' . $value['ownerId'] ?>>
+                            <input type="submit" class="btn" value="Editar" name="EditarPropiedad">
+                            <input type="submit" class="btn" value="Eliminar" onclick="return confirm('Esta seguro? el cambio es irreversible!');" name="EliminarPropiedad">
+                        </form>
+                    </td>
                 </tr>
-            <?php endif ?>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <tr>
+                <td colspan="3" class="empty">NO HAY REGISTROS</td>
+            </tr>
+        <?php endif ?>
     </tbody>
 </table>
 <?php

@@ -91,7 +91,6 @@ class propietariosController
 
 $dato = propietariosController::leer();
 
-
 if (isset($_POST)) {
     if (isset($_POST["NuevoPropietario"])) {
         if ($_REQUEST and $_REQUEST['name'] and $_REQUEST['id'] and $_REQUEST['phone'] and $_REQUEST['gender']) {
