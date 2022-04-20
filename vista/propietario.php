@@ -1,7 +1,13 @@
 <?php
 require_once("./layouts/header.php");
+
+require_once("../controlador/propietarios.php");
+
+
+$b = 10;
+
 ?>
-<h1>Propietarios</h1>
+<h1>Catálogo de Propietarios</h1>
 
 <a href="propietario-nuevo.php" class="btn">Agregar Propietario</a>
 
@@ -14,26 +20,26 @@ require_once("./layouts/header.php");
     <tbody>
         <?php
         if (!empty($dato)) :
-            foreach ($dato as $key => $value)
-                foreach ($value as $v) : ?>
+            foreach ($dato as $key => $value) : ?>
                 <tr>
-                    <td><?php echo $v['id'] ?> </td>
-                    <td><?php echo $v['nombre'] ?> </td>
-                    <td>
-                        <a class="btn" href="propietario-editar.php">EDITAR</a>
-                        <a class="btn" href="propietario-eliminar.php" onclick="return confirm('ESTA SEGURO'); false">ELIMINAR</a>
+                    <td><?php echo $value['id'] ?> </td>
+                    <td><?php echo $value['name'] ?> </td>
+                    <td class="flex-row">
+                        <form method="post" action=<?php echo 'propietario-editar.php?id=' . $value['id'] ?>>
+                            <input type="submit" class="btn" value="Editar" name="EditarPropietario">
+                        </form>
+                        <form method="post" action=<?php echo 'propietario-editar.php?id=' . $value['id'] ?>>
+                            <input type="submit" class="btn" value="Eliminar" onclick="return confirm('Are you sure?');" name="EliminarPropietario">
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
         <?php else : ?>
             <tr>
-                <td colspan="3">NO HAY REGISTROS</td>
+                <td colspan="3" class="empty">NO HAY REGISTROS</td>
             </tr>
         <?php endif ?>
     </tbody>
 </table>
-
-<br>
-    <a href="propiedad.php" class="btn">2. Agregar Propiedad</a>
 <?php
 require_once("./layouts/footer.php");

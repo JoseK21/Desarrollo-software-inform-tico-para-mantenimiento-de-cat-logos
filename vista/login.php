@@ -8,9 +8,9 @@ require_once("../controlador/login.php");
     <h1>Login</h1>
     <form method="post">
         <label for="id">Cédula:</label><br>
-        <input type="number" id="id" name="id" value="303330333" maxlength="9"><br>
+        <input type="number" id="id" name="id" value="303330333" maxlength="9" require><br>
         <label for="pass">Contraseña:</label><br>
-        <input type="password" id="pass" name="pass" value="2022"><br><br>
+        <input type="password" id="pass" name="pass" value="2022" require><br><br>
         <input type="submit" value="Ingresar" name="Ingresar">
     </form>
 

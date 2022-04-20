@@ -20,12 +20,10 @@ class Login
             $_SESSION['userValid'] = true;
             $_SESSION['username'] = $row[0]['username'];
             $_SESSION['id'] = $row[0]['id'];
-            return true;
         } else {
             $_SESSION['userValid'] = false;
             $_SESSION['username'] = '';
             $_SESSION['id'] = '';
-            return false;
         }
     }
 }

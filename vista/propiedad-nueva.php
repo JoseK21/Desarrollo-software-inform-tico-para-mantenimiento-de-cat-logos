@@ -11,7 +11,7 @@ require_once("./layouts/header.php");
     <input class="mv-5" type="text" placeholder="INGRESE TELÉFONO:" name="phone"> <br>
     <input class="mv-5" type="text" placeholder="INGRESE GÉNERO:" name="gender"> <br>
     <div class="flex-row">
-        <input type="submit" class="btn" name="btn" value="GUARDAR"> <br>
+        <input type="submit" class="btn" name="NuevoPropiedad" value="GUARDAR"> <br>
         <a href="propiedad.php" class="btn btn-gray">Atras</a>
     </div>
 </form>

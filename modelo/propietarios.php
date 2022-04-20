@@ -1,46 +1,58 @@
 <?php
-class Modelo{
-    private $Modelo;
-    private $db;    
-    private $datos;    
-    public function __construct(){
-        $this->Modelo = array();
-        $this->db = new PDO('mysql:host=localhost;dbname=mvc',"root","");
+class Propietario
+{
+    private $db;
+    private $datos;
+    public function __construct()
+    {
+        $this->db = new PDO('mysql:host=localhost;dbname=mvc', "root", "");
     }
-    public function insertar($tabla, $data){
-        $consulta="insert into ".$tabla." values(null,". $data .")";
-        $resultado=$this->db->query($consulta);
+    public function insertar($tabla, $data)
+    {
+        $consulta = "insert into " . $tabla . " values(" . $data . ")";
+        $resultado = $this->db->query($consulta);
         if ($resultado) {
             return true;
-        }else {
+        } else {
             return false;
         }
-     }
+    }
 
-     public function mostrar($tabla,$condicion){
-        $consul="select * from ".$tabla." where ".$condicion.";";
-        $resu=$this->db->query($consul);        
-        while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
-                $this->datos[]=$filas;
+    public function mostrar($tabla, $condicion)
+    {
+        if (!empty($condicion)) {
+            $consul = "select * from " . $tabla . " where " . $condicion . ";";
         }
+        else {
+            $consul = "select * from " . $tabla . ";";
+        }
+        $resu = $this->db->query($consul);
+        $this->datos = [];
+        while ($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
+            $this->datos[] = $filas;
+        }
+
         return $this->datos;
-    } 
+    }
 
-    public function actualizar($tabla, $data, $condicion){       
-        $consulta="update ".$tabla." set ". $data ." where ".$condicion;
-        $resultado=$this->db->query($consulta);
+    public function actualizar($tabla, $data, $condicion)
+    {
+        $consulta = "update " . $tabla . " set " . $data . " where " . $condicion. ";";
+
+        $resultado = $this->db->query($consulta);
         if ($resultado) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-    public function eliminar($tabla, $condicion){
-        $eli="delete from ".$tabla." where ".$condicion;
-        $res=$this->db->query($eli);
+    public function eliminar($tabla, $condicion)
+    {
+        $eli = "delete from " . $tabla . " where " . $condicion;
+        $res = $this->db->query($eli);
         if ($res) {
-            return true; 
-        }else {
+            return true;
+        } else {
             return false;
         }
     }

@@ -14,6 +14,10 @@
     color: rgb(0, 98, 128);
 }
 
+.empty {
+    color: rgb(0, 98, 128);
+}
+
 .flex-row {
     display: flex;
     align-items: center;
@@ -44,6 +48,7 @@
 
 table {
     width: 100%;
+    margin-bottom: 80px;
 }
 
 table,

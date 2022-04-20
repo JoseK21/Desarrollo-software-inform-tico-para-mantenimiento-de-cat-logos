@@ -15,7 +15,7 @@ require_once("./layouts/header.php");
             <input type="hidden" value="<?php echo $v['id'] ?>" name="id"> <br>
 
             <div class="flex-row">
-                <input type="submit" class="btn" name="btn" value="ACTUALIZAR"> <br>
+                <input type="submit" class="btn" name="ActualizarPropiedad" value="ACTUALIZAR"> <br>
                 <input type="hidden" name="m" value="actualizar">
                 <a href="propiedad.php" class="btn btn-gray">Atras</a>
             </div>

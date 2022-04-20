@@ -8,26 +8,24 @@ class loginController
         $this->model = new Login();
     }
 
-    //validar
     static function validar()
     {
-        if (isset($_POST["Ingresar"]) AND $_REQUEST AND $_REQUEST['id'] AND $_REQUEST['pass']) {
+        $id = $_REQUEST['id'];
+        $pass = $_REQUEST['pass'];
 
-            $id = $_REQUEST['id'];
-            $pass = $_REQUEST['pass'];
+        $condition = "id='" . $id . "' AND password='" . $pass . "'";
 
-            $condition = "id='" . $id . "' AND password='" . $pass . "'";
+        $login = new Login();
+        $login->login("login", $condition);
 
-            $login = new Login();
-            $isValid = $login->login("login", $condition);
-
-            if ($_SESSION['userValid']) {
-                header("location:" . "propietario.php");
-            }
+        if ($_SESSION['userValid']) {
+            header("location:" . "propietario.php");
         }
     }
 }
 
 if (isset($_POST)) {
-    loginController::validar();
+    if (isset($_POST["Ingresar"]) and $_REQUEST and $_REQUEST['id'] and $_REQUEST['pass']) {
+        loginController::validar();
+    }
 }

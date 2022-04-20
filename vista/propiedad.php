@@ -18,11 +18,10 @@ require_once("./layouts/header.php");
     <tbody>
         <?php
             if(!empty($dato)):
-                foreach($dato as $key => $value)
-                    foreach($value as $v):?>
+                foreach ($dato as $key => $value) : ?>
                     <tr>
-                        <td><?php echo $v['id'] ?> </td>
-                        <td><?php echo $v['nombre'] ?> </td>
+                        <td><?php echo $value['id'] ?> </td>
+                        <td><?php echo $value['ownerId'] ?> </td>
                         <td>
                             <a class="btn" href="propiedad-editar.php">EDITAR</a>
                             <a class="btn" href="propiedad-eliminar.php" onclick="return confirm('ESTA SEGURO'); false">ELIMINAR</a>
