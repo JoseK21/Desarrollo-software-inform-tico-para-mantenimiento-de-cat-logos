@@ -5,7 +5,7 @@ class Propiedades
     private $datos;
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=mvc', "root", "");
+        $this->db = new PDO('mysql:host=localhost;dbname=mantenimiento', "root", "");
     }
     public function insertar($tabla, $data)
     {

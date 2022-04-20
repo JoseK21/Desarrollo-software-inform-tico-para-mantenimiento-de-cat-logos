@@ -6,7 +6,7 @@ class Login
 
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=mvc', "root", "");
+        $this->db = new PDO('mysql:host=localhost;dbname=mantenimiento', "root", "");
     }
 
     public function login($tabla, $condicion)

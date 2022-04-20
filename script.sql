@@ -5,7 +5,7 @@ CREATE TABLE `login` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
    CONSTRAINT `id` PRIMARY KEY (`id`)
-) 
+);
 
 
 CREATE TABLE `owner` (
@@ -14,7 +14,7 @@ CREATE TABLE `owner` (
   `phone` int(8) NOT NULL,
   `gender`  varchar(50) NOT NULL,
   CONSTRAINT `id` PRIMARY KEY (`id`)
-)
+);
 
 
 CREATE TABLE `property` (
@@ -29,4 +29,4 @@ CREATE TABLE `property` (
   `ownerId` int(11),
   PRIMARY KEY (`id`),
   FOREIGN KEY (`ownerId`) REFERENCES owner(`id`)
-)
+);
