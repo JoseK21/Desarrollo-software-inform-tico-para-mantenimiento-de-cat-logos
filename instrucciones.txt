@@ -1,4 +1,6 @@
 1. Abrir programa XAMPP
 2. Iniciar servicio de MySQL y Apache
 3. Copiar y pegar carpeta descomprimida (Documento adjunto) dentro de htdocs, por ejemplo: C:\xampp\htdocs
-4. Abrir navegador e ingresar http://localhost/mantenimiento/
+4. Abrir navegador e ingresar http://localhost/phpmyadmin
+5. Crear Base de Datos y agregar datos (correr archivos .sql)
+6. Abrir navegador e ingresar http://localhost/mantenimiento/
