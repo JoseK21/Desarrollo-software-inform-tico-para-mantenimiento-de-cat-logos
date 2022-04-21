@@ -9,6 +9,7 @@ class Login
         $this->db = new PDO('mysql:host=localhost;dbname=mantenimiento', "root", "");
     }
 
+    // Login a Base de Datos
     public function login($tabla, $condicion)
     {
         $consul = "select * from " . $tabla . " where " . $condicion . ";";

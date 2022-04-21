@@ -22,12 +22,9 @@ require_once("../controlador/login.php");
 
 <?php
 
+// Borrar las variables de session - al estar en la vista de Login
 $_SESSION['userValid'] = false;
 $_SESSION['username'] = '';
 $_SESSION['id'] = '';
 
 ?>
-
-<?php
-require_once("./layouts/footer.php");
-

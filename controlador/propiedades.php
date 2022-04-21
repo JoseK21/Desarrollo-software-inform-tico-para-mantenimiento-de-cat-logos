@@ -3,13 +3,11 @@ require_once("../modelo/propiedades.php");
 
 class propiedadesController
 {
-    private $model;
     public function __construct()
     {
-        $this->model = new Propiedades();
     }
 
-
+    // Recuperar las propiedades de usuario por su ID
     static function leer()
     {
         $ownerId = $_REQUEST['ownerId'];
@@ -31,7 +29,7 @@ class propiedadesController
         return $dato;
     }
 
-    //guardar
+    // Crear una nueva propiedad
     static function guardar()
     {
         $province = $_REQUEST['province'];
@@ -56,7 +54,7 @@ class propiedadesController
         }
     }
 
-    //editar
+    // Obtiene la informacion de las propiedades de un usuario por su ID
     static function editar()
     {
         $id = $_REQUEST['id'];
@@ -69,7 +67,8 @@ class propiedadesController
         }
         return $propiedad->mostrar("property", "id=" . $id . " AND ownerId=" . $ownerId)[0];
     }
-    //actualizar
+
+    // Actualiza la propiedad seleccionada
     static function actualizar()
     {
         $province = $_REQUEST['province'];
@@ -95,7 +94,7 @@ class propiedadesController
         }
     }
 
-    //eliminar
+    // Elimina la propiedad seleccionada
     static function eliminar()
     {
         $id = $_REQUEST['id'];
@@ -116,6 +115,7 @@ class propiedadesController
 
 $dato = propiedadesController::leer();
 
+// Consulta por cambios en la url por el metodo post de los Formularios
 if (isset($_POST)) {
     if (isset($_POST["NuevoPropiedad"])) {
         if ($_REQUEST and $_REQUEST['province'] and $_REQUEST['canton'] and $_REQUEST['district'] and $_REQUEST['price'] and $_REQUEST['area'] and $_REQUEST['lastDateUpdated'] and $_REQUEST['ownerId'] and $_REQUEST['description']) {

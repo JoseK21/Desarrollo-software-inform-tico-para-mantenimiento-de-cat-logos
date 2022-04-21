@@ -20,6 +20,3 @@ require_once("../controlador/propietarios.php");
         <a href="propietario.php" class="btn btn-gray">Atras</a>
     </div>
 </form>
-
-<?php
-require_once("./layouts/footer.php");

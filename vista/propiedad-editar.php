@@ -47,6 +47,3 @@ require_once("../controlador/propiedades.php");
         </tr>
     <?php endif ?>
 </form>
-
-<?php
-require_once("./layouts/footer.php");

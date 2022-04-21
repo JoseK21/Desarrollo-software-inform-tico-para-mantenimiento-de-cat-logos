@@ -33,6 +33,3 @@ $dato = propietariosController::editar();
         </tr>
     <?php endif ?>
 </form>
-
-<?php
-require_once("./layouts/footer.php");

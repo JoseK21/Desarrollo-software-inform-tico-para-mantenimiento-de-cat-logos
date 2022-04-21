@@ -32,5 +32,3 @@ require_once("../controlador/propiedades.php");
     </div>
 </form>
 
-<?php
-require_once("./layouts/footer.php");

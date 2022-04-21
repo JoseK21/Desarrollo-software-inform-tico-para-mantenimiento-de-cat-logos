@@ -42,5 +42,3 @@ require_once("../controlador/propiedades.php");
         <?php endif ?>
     </tbody>
 </table>
-<?php
-require_once("./layouts/footer.php");

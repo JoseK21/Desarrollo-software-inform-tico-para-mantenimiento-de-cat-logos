@@ -3,12 +3,11 @@ require_once("../modelo/propietarios.php");
 
 class propietariosController
 {
-    private $model;
     public function __construct()
     {
-        $this->model = new Propietario();
     }
 
+    // Recuperar los propietarios
     static function leer()
     {
         $producto   = new Propietario();
@@ -17,7 +16,7 @@ class propietariosController
         return $dato;
     }
 
-    //guardar
+     // Crear un nuevo propietario
     static function guardar()
     {
         $name = $_REQUEST['name'];
@@ -38,18 +37,19 @@ class propietariosController
         }
     }
 
-    //editar
+    // Obtiene la informacion del propietario por su ID 
     static function editar()
     {
         $id = $_REQUEST['id'];
         $propietario = new Propietario();
 
-        if(empty($propietario->mostrar("owner", "id=" . $id))) {
+        if (empty($propietario->mostrar("owner", "id=" . $id))) {
             header("location:" . "propietario.php");
         }
         return $propietario->mostrar("owner", "id=" . $id)[0];
     }
-    //actualizar
+
+    // Actualiza el propietario seleccionado
     static function actualizar()
     {
         $name = $_REQUEST['name'];
@@ -71,7 +71,7 @@ class propietariosController
         }
     }
 
-    //eliminar
+    // Elimina el propietario seleccionado
     static function eliminar()
     {
         $id = $_REQUEST['id'];
@@ -91,6 +91,7 @@ class propietariosController
 
 $dato = propietariosController::leer();
 
+// Consulta por cambios en la url por el metodo post de los Formularios
 if (isset($_POST)) {
     if (isset($_POST["NuevoPropietario"])) {
         if ($_REQUEST and $_REQUEST['name'] and $_REQUEST['id'] and $_REQUEST['phone'] and $_REQUEST['gender']) {

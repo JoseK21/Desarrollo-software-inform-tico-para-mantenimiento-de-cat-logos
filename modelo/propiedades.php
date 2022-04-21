@@ -7,6 +7,7 @@ class Propiedades
     {
         $this->db = new PDO('mysql:host=localhost;dbname=mantenimiento', "root", "");
     }
+    // Operacion de Crear (C) en Base de Datos
     public function insertar($tabla, $data)
     {
         $consulta = "insert into " . $tabla . " values(" . $data . ")";
@@ -19,6 +20,7 @@ class Propiedades
         }
     }
 
+    // Operacion de Leer (R) en Base de Datos
     public function mostrar($tabla, $condicion)
     {
         if (!empty($condicion)) {
@@ -34,6 +36,7 @@ class Propiedades
         return $this->datos;
     }
 
+    // Operacion de Actualizar (U) en Base de Datos
     public function actualizar($tabla, $data, $condicion)
     {
         $consulta = "update " . $tabla . " set " . $data . " where " . $condicion;
@@ -44,6 +47,7 @@ class Propiedades
             return false;
         }
     }
+    // Operacion de Eliminar (D) en Base de Datos
     public function eliminar($tabla, $condicion)
     {
         $eli = "delete from " . $tabla . " where " . $condicion;

@@ -37,5 +37,3 @@ require_once("../controlador/propietarios.php");
         <?php endif ?>
     </tbody>
 </table>
-<?php
-require_once("./layouts/footer.php");
